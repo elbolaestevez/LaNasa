@@ -20,14 +20,13 @@ router.get(
   "/astronomy/landings/class/:class",
   LandingGetController.getLandingClass
 );
-router.get("/astronomy/landings?:from?:to", LandingGetController.filterDate);
+router.get("/astronomy/landings/dates?:from?:to?", LandingGetController.filterDate);
 
 //landing post
 router.post("/astronomy/landings/create", LandingPostController.createLanding);
 router.put("/astronomy/landings/:id", LandingPostController.updateLanding);
 router.delete("/astronomy/landings/:id",LandingPostController.deleteLanding);
 
-//NEas //Start with this query
-//router.get('/astronomy/neas?',controllers.getNea);
+
 
 module.exports = router;

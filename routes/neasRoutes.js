@@ -8,7 +8,7 @@ router.get(
     "/astronomy/neas?:class",
     NeasGetController.getNeasClass
   );
-router.get("/astronomy/neas/:from?:to", NeasGetController.neasfilterDate);  
+router.get("/astronomy/neas/dates?:from?:to?", NeasGetController.neasfilterDate);  
 
 //Neaspost
 router.post("/astronomy/neas/create", NeasPostController.createNeas)  
