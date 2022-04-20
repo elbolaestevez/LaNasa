@@ -105,10 +105,23 @@ const getLandingClass = async (req, res) => {
 
 const filterDate = async (req, res) => {
   const { from, to } = req.query;
-  console.log(from);
-  console.log(req.query);
-
+  console.log(to);
+  
+ if (from==null){
+console.log("hola nulo");
+let from="1880"
+console.log(from);
+const landings1 = await Landing.find()
+      .where("year")
+      .gte(`${from}-01-01T00:00:00.000`)
+      .lte(`${to}-12-31T23:59:59.000`)
+      .select("year")
+      .exec();
+      res.status(200).send(landings1);
+ }
+ else{
   try {
+    console.log("hola verdadero");
     const landings = await Landing.find()
       .where("year")
       .gte(`${from}-01-01T00:00:00.000`)
@@ -119,6 +132,7 @@ const filterDate = async (req, res) => {
   } catch (err) {
     res.status(500).send({ message: err.message });
   }
+}
 };
 module.exports = {
   getLanding,
