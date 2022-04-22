@@ -3,6 +3,7 @@ const Landing = require("../models/landing");
 const createLanding = async (req, res) => {
   try {
     const landing = await new Landing(req.body).save();
+    
     res.status(200).send({ message: "user created successfully" });
   } catch (err) {
     res.status(400).json({ error: err });
